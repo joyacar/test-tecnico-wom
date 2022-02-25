@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchBreedsImages } from '../hooks/useFetchBreedsImages';
+import { BreedsImages } from './BreedsImages';
 
 export const BreedsScreen = () => {
     const {breedId} = useParams();
@@ -26,8 +27,11 @@ export const BreedsScreen = () => {
                 <div className='col-12 mansory-parents-container mt-2 mb-2'>
                     <div className='masonry-container mt-3 mb-3'>
                         {
-                            breeds.map((url) => {
-                                return <div className='masonry-item'><img src={url.name} className="img-thumbnail animate__animated animate__fadeIn" /></div>
+                            breeds.map(({name}) => {
+                                return <BreedsImages 
+                                    key={Math.random()} 
+                                    src={name} 
+                                    />
                             })
                         }
                     </div>
